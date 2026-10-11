@@ -17,6 +17,9 @@
     "postcss": "^8.5.29",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "react-fast-marquee": "^1.6.5",
+    "react-hot-toast": "^2.6.1",
+    "react-marquee-text": "^1.0.6",
     "react-toastify": "^11.1.0"
   },
   "devDependencies": {
