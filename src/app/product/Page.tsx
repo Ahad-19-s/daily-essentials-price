@@ -25,7 +25,7 @@ export default async function Page() {
       {/* Section B */}
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold">আজ দাম কমেছে ▼</h2>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {fallers.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -40,7 +40,7 @@ export default async function Page() {
         <p className="mb-4 text-gray-600">
           সব নিত্যপ্রয়োজনীয় পণ্যের দাম একসাথে দেখুন।
         </p>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

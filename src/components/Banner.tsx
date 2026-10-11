@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +8,7 @@ interface StatProps {
 
 export default function HeroBanner() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900 text-white">
+    <section className="relative overflow-hidden bg-linear-to-br from-emerald-900 via-green-800 to-teal-900 text-white">
       {/* Decorative Blur Circles */}
       <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-yellow-400/20 blur-3xl" />
       <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-emerald-400/20 blur-3xl" />
@@ -38,7 +36,7 @@ export default function HeroBanner() {
           {/* Heading */}
           <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             আজকের বাজারের{" "}
-            <span className="bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent">
               দাম এক নজরে
             </span>
           </h1>
@@ -119,7 +117,7 @@ export default function HeroBanner() {
       </div>
 
       {/* Bottom Fade */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/20 to-transparent" />
     </section>
   );
 }
