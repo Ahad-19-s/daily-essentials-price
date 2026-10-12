@@ -22,45 +22,65 @@ const SignInPage = () => {
       return;
     }
 
-    const { data, error } = await authClient.signIn.email({
-      ...user,
-      callbackURL: "/",
-    });
+    try {
+      const { data, error } = await authClient.signIn.email({
+        ...user,
+        callbackURL: "/",
+      });
 
-    if (data) {
-      toast.success("✅ সফলভাবে সাইন ইন হয়েছে!");
-      router.push("/");
-    }
+      if (error) {
+        toast.error(error.message || "❌ সাইন ইন করতে সমস্যা হয়েছে!");
+        return;
+      }
 
-    if (error) {
-      toast.error(error.message || "❌ সাইন ইন করতে সমস্যা হয়েছে!");
+      if (data) {
+        toast.success("✅ সফলভাবে সাইন ইন হয়েছে!");
+        router.push("/");
+        router.refresh();
+      }
+    } catch {
+      toast.error("❌ Network error! আবার চেষ্টা করুন।");
     }
   };
 
   const handleGoogleSignIn = async () => {
     try {
-      await authClient.signIn.social({ provider: "google" });
-      toast.success("✅ Google দিয়ে সাইন ইন সফল!");
-    } catch (err) {
+      const { error } = await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/",
+      });
+
+      if (error) {
+        toast.error(error.message || "❌ Google সাইন ইন ব্যর্থ!");
+      }
+    } catch {
       toast.error("❌ Google সাইন ইন ব্যর্থ!");
     }
   };
 
   const handleGithubSignIn = async () => {
     try {
-      await authClient.signIn.social({ provider: "github" });
-      toast.success("✅ Github দিয়ে সাইন ইন সফল!");
-    } catch (err) {
-      toast.error("❌ Github সাইন ইন ব্যর্থ!");
+      const { error } = await authClient.signIn.social({
+        provider: "github",
+        callbackURL: "/",
+      });
+
+      if (error) {
+        toast.error(error.message || "GitHub দিয়ে সাইন ইন ব্যর্থ!");
+      }
+    } catch (error) {
+      console.error("GitHub sign-in error:", error);
+      toast.error("GitHub দিয়ে সাইন ইন করা যায়নি!");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center mt-10 px-4">
-      <h2 className="text-3xl font-bold text-green-700 mb-6">সাইন ইন</h2>
+    <div className="mt-10 flex flex-col items-center justify-center px-4">
+      <h2 className="mb-6 text-3xl font-bold text-green-700">সাইন ইন</h2>
+
       <form
         onSubmit={onSubmit}
-        className="w-full max-w-sm bg-white shadow-lg rounded-xl p-6 space-y-4"
+        className="w-full max-w-sm space-y-4 rounded-xl bg-white p-6 shadow-lg"
       >
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -69,6 +89,7 @@ const SignInPage = () => {
           <input
             name="email"
             type="email"
+            autoComplete="email"
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-green-500 focus:ring focus:ring-green-200"
             placeholder="Email"
             required
@@ -82,6 +103,7 @@ const SignInPage = () => {
           <input
             name="password"
             type="password"
+            autoComplete="current-password"
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-green-500 focus:ring focus:ring-green-200"
             placeholder="Password"
             required
@@ -90,25 +112,28 @@ const SignInPage = () => {
 
         <button
           type="submit"
-          className="w-full rounded-md bg-green-600 px-4 py-2 text-white font-semibold hover:bg-green-700 transition-colors"
+          className="w-full rounded-md bg-green-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-700"
         >
           সাইন ইন করুন
         </button>
       </form>
 
       {/* Social Sign In */}
-      <div className="mt-6 flex flex-col gap-3 w-full max-w-sm">
+      <div className="mt-6 flex w-full max-w-sm flex-col gap-3">
         <button
+          type="button"
           onClick={handleGoogleSignIn}
-          className="w-full rounded-md bg-red-500 px-4 py-2 text-white font-semibold hover:bg-red-600 transition-colors"
+          className="w-full rounded-md bg-red-500 px-4 py-2 font-semibold text-white transition-colors hover:bg-red-600"
         >
           Google দিয়ে সাইন ইন
         </button>
+
         <button
+          type="button"
           onClick={handleGithubSignIn}
-          className="w-full rounded-md bg-gray-800 px-4 py-2 text-white font-semibold hover:bg-gray-900 transition-colors"
+          className="w-full rounded-md bg-gray-800 px-4 py-2 font-semibold text-white transition-colors hover:bg-gray-900"
         >
-          Github দিয়ে সাইন ইন
+          GitHub দিয়ে সাইন ইন
         </button>
       </div>
 

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: {
@@ -61,6 +62,17 @@ export default function RootLayout({
           className="pointer-events-none fixed bottom-0 left-0 -z-10 h-64 w-64 rounded-full bg-emerald-100/30 blur-3xl"
         />
         <Footer />
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: "#166534",
+              color: "#fff",
+            },
+          }}
+        />
       </body>
     </html>
   );

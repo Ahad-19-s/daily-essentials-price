@@ -68,10 +68,13 @@ export default async function Marquee() {
                   href={`/product/${product.slug}`}
                   className="flex items-center gap-2 py-2 text-sm hover:underline mx-6" // এখানে extra margin
                 >
-                  <span className="font-semibold">{product.nameBn}</span>
-                  <span className="text-yellow-200">
-                    {product.today} টাকা/{product.unit}
+                  <span suppressHydrationWarning className="font-semibold">
+                    {product.nameBn}{" "}
                   </span>
+                  <span suppressHydrationWarning className="font-semibold">
+                    {product.nameBn}
+                  </span>
+
                   <span
                     className={
                       product.change.dir === "up"

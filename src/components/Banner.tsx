@@ -30,13 +30,12 @@ export default function HeroBanner() {
           {/* Badge */}
           <span className="inline-flex items-center gap-2 rounded-full border border-yellow-300/40 bg-yellow-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-yellow-300 backdrop-blur-sm sm:text-sm">
             <span className="h-2 w-2 animate-pulse rounded-full bg-yellow-300" />
-            ফলনবার, ৬ অক্টোবর ২০২৬
           </span>
 
           {/* Heading */}
           <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             আজকের বাজারের{" "}
-            <span className="bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent">
               দাম এক নজরে
             </span>
           </h1>
@@ -88,10 +87,7 @@ export default function HeroBanner() {
 
         {/* ---------- Right Image ---------- */}
         <div className="relative flex flex-1 justify-center lg:justify-end">
-          {/* Glow behind image */}
           <div className="absolute inset-0 -z-10 rounded-full bg-yellow-400/20 blur-3xl" />
-
-          {/* Floating Card */}
           <div className="relative rounded-3xl border border-white/20 bg-white/5 p-6 shadow-2xl backdrop-blur-md">
             <Image
               src="/bazar-hero.png"
@@ -101,13 +97,9 @@ export default function HeroBanner() {
               priority
               className="h-auto w-full max-w-sm rounded-2xl object-contain drop-shadow-2xl sm:max-w-md"
             />
-
-            {/* Floating Badge — Top */}
             <div className="absolute -top-4 -right-4 rounded-2xl border border-white/20 bg-white/90 px-4 py-2 text-xs font-bold text-green-800 shadow-xl sm:text-sm">
               🔥 লাইভ আপডেট
             </div>
-
-            {/* Floating Badge — Bottom */}
             <div className="absolute -bottom-4 -left-4 flex items-center gap-2 rounded-2xl border border-white/20 bg-white/90 px-4 py-2 text-xs font-bold text-green-800 shadow-xl sm:text-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" />
               দাম বাড়ছে
@@ -116,7 +108,6 @@ export default function HeroBanner() {
         </div>
       </div>
 
-      {/* Bottom Fade */}
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
     </section>
   );

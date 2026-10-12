@@ -15,7 +15,8 @@ const SignUpPage = () => {
 
     if (loading) return;
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     const name = String(formData.get("name") ?? "").trim();
     const image = String(formData.get("image") ?? "").trim();
@@ -49,8 +50,8 @@ const SignUpPage = () => {
       }
 
       if (data) {
-        toast.success("সফলভাবে রেজিস্ট্রেশন হয়েছে!");
-        router.push("/signin");
+        toast.success("সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে!");
+        router.push("/");
         router.refresh();
       }
     } catch {
@@ -60,21 +61,24 @@ const SignUpPage = () => {
     }
   };
 
-  const handleSocialSignIn = async (provider: "google" | "github") => {
-    try {
-      setLoading(true);
+  const handleSocialSignUp = async (provider: "google" | "github") => {
+    if (loading) return;
 
+    setLoading(true);
+
+    try {
       const { error } = await authClient.signIn.social({
         provider,
         callbackURL: "/",
       });
 
       if (error) {
-        toast.error(error.message || "Social login ব্যর্থ হয়েছে!");
+        toast.error(error.message || `${provider} দিয়ে সাইন আপ ব্যর্থ হয়েছে!`);
         setLoading(false);
       }
-    } catch {
-      toast.error("Social login করা যায়নি। আবার চেষ্টা করুন।");
+    } catch (error) {
+      console.error("Social sign-up error:", error);
+      toast.error("Social sign-up করা যায়নি। আবার চেষ্টা করুন।");
       setLoading(false);
     }
   };
@@ -170,9 +174,8 @@ const SignUpPage = () => {
         <div className="flex flex-col gap-3">
           <button
             type="button"
-            disabled={loading}
-            onClick={() => handleSocialSignIn("google")}
-            className="rounded-lg border px-4 py-3 font-medium transition hover:bg-gray-50 disabled:opacity-60"
+            onClick={() => handleSocialSignUp("google")}
+            className="w-full rounded-lg border px-4 py-3 font-medium transition hover:bg-gray-50"
           >
             Google দিয়ে সাইন আপ
           </button>
@@ -180,10 +183,10 @@ const SignUpPage = () => {
           <button
             type="button"
             disabled={loading}
-            onClick={() => handleSocialSignIn("github")}
-            className="rounded-lg border px-4 py-3 font-medium transition hover:bg-gray-50 disabled:opacity-60"
+            onClick={() => handleSocialSignUp("github")}
+            className="w-full rounded-lg border px-4 py-3 font-medium transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            GitHub দিয়ে সাইন আপ
+            {loading ? "অপেক্ষা করুন..." : "github দিয়ে সাইন আপ"}
           </button>
         </div>
       </div>
