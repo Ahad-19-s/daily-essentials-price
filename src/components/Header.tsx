@@ -5,10 +5,10 @@ import Image from "next/image";
 import NavLinks from "./Navlinks";
 import { startTransition, useEffect, useState } from "react";
 import Link from "next/link";
+import UserInfo from "./UserInfo";
 
 const Header = () => {
   const [now, setNow] = useState<number | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // demo state
 
   useEffect(() => {
     startTransition(() => {
@@ -23,33 +23,44 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="relative mx-auto max-w-7xl px-4 py-4">
+    <header className="relative mx-auto max-w-7xl px-6 py-4 bg-white shadow-md rounded-lg">
       {/* Top row: logo + date/time + auth */}
       <div className="flex items-center justify-between">
         {/* Logo + Date */}
-        <div className="flex items-center gap-2">
-          <Image
-            src="/logo-icon.png"
-            alt="Bazar Dor Logo"
-            width={40}
-            height={40}
-            priority
-          />
-          <div className="flex flex-col">
+        <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/logo-icon.png"
+              alt="Bazar Dor Logo"
+              width={44}
+              height={44}
+              priority
+              className="drop-shadow-sm"
+            />
             <span
               suppressHydrationWarning
-              className="text-2xl font-bold text-green-700"
+              className="text-2xl font-extrabold text-green-700 tracking-tight"
             >
-              🛒 বাজার দর
+              বাজার দর
             </span>
-            <span className="text-xs text-neutral-500">
+          </Link>
+
+          {/* Date & Time box */}
+          <div className="flex flex-col items-start bg-emerald-50 px-4 py-2 rounded-md shadow-sm border border-emerald-100">
+            <span
+              suppressHydrationWarning
+              className="text-sm font-bold text-emerald-800"
+            >
               {now
                 ? new Date(now).toLocaleDateString("bn-BD", {
                     dateStyle: "full",
                   })
                 : "তারিখ লোড হচ্ছে..."}
             </span>
-            <span className="text-xs text-neutral-400">
+            <span
+              suppressHydrationWarning
+              className="text-sm font-semibold text-slate-700"
+            >
               {now
                 ? new Date(now).toLocaleTimeString("bn-BD", {
                     hour: "2-digit",
@@ -61,41 +72,14 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Auth buttons */}
-        <div className="flex gap-3">
-          {isLoggedIn ? (
-            <>
-              <Link
-                href="/profile"
-                className="text-sm font-medium text-green-700 hover:underline"
-              >
-                প্রোফাইল
-              </Link>
-              <button className="text-sm text-red-600 hover:underline">
-                সাইন আউট
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                href="/signin"
-                className="text-sm font-medium text-green-700 hover:underline"
-              >
-                সাইন ইন
-              </Link>
-              <Link
-                href="/signup"
-                className="text-sm font-medium text-green-700 hover:underline"
-              >
-                সাইন আপ
-              </Link>
-            </>
-          )}
-        </div>
+        {/* Auth buttons (imported from UserInfo.tsx) */}
+        <UserInfo />
       </div>
 
       {/* Second row: category nav links */}
-      <NavLinks />
+      <div className="mt-4 border-t border-slate-200 pt-3">
+        <NavLinks />
+      </div>
     </header>
   );
 };

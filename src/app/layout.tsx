@@ -1,16 +1,9 @@
-// app/layout.tsx
+// src/app/layout.tsx
 import type { Metadata } from "next";
-import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
-
-const hindSiliguri = Hind_Siliguri({
-  subsets: ["bengali", "latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -38,14 +31,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="bn"
       data-theme="light"
-      className={`${hindSiliguri.className} min-h-full antialiased`}
+      className="min-h-full antialiased font-sans"
       suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col bg-[#F9FAFB] text-slate-800 selection:bg-emerald-200 selection:text-emerald-950">

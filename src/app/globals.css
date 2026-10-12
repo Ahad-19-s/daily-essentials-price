@@ -33,3 +33,13 @@ html, body {
 body {
   font-family: 'Hind Siliguri', sans-serif;
 }
+@font-face {
+  font-family: "HindSiliguri";
+  src: url("/fonts/HindSiliguri-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "HindSiliguri";
+  src: url("/fonts/HindSiliguri-Bold.ttf") format("truetype");
+  font-weight: 700;
+}

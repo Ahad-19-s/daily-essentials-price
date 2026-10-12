@@ -8,7 +8,7 @@ interface StatProps {
 
 export default function HeroBanner() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-br from-emerald-900 via-green-800 to-teal-900 text-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900 text-white">
       {/* Decorative Blur Circles */}
       <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-yellow-400/20 blur-3xl" />
       <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-emerald-400/20 blur-3xl" />
@@ -16,7 +16,7 @@ export default function HeroBanner() {
 
       {/* Grid Pattern Overlay */}
       <div
-        className="absolute inset-0 opacity-[0.07]"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
             "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
@@ -24,31 +24,31 @@ export default function HeroBanner() {
         }}
       />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 py-16 lg:flex-row lg:py-24">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-12 px-6 py-20 lg:flex-row lg:py-28">
         {/* ---------- Left Content ---------- */}
         <div className="flex-1 text-center lg:text-left">
           {/* Badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-300/40 bg-yellow-400/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-yellow-300 backdrop-blur-sm sm:text-sm">
+          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-300/40 bg-yellow-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-yellow-300 backdrop-blur-sm sm:text-sm">
             <span className="h-2 w-2 animate-pulse rounded-full bg-yellow-300" />
             ফলনবার, ৬ অক্টোবর ২০২৬
           </span>
 
           {/* Heading */}
-          <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             আজকের বাজারের{" "}
-            <span className="bg-linear-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent">
               দাম এক নজরে
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-green-50/90 sm:text-lg lg:mx-0">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-green-50/90 sm:text-lg lg:mx-0">
             চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও ফলের দাম — বাজারভিত্তিক
             বিশ্লেষণ, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তনের এক জায়গায়।
           </p>
 
           {/* CTA Buttons */}
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
             <Link
               href="#সব-পণ্য"
               className="group inline-flex items-center gap-2 rounded-xl bg-yellow-400 px-6 py-3 text-base font-semibold text-green-900 shadow-lg shadow-yellow-400/30 transition-all hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-yellow-400/50"
@@ -79,7 +79,7 @@ export default function HeroBanner() {
           </div>
 
           {/* Stats Row */}
-          <div className="mt-10 grid grid-cols-3 gap-4 border-t border-white/10 pt-6 sm:gap-6">
+          <div className="mt-12 grid grid-cols-3 gap-6 border-t border-white/10 pt-6">
             <Stat value="৩৩+" label="পণ্য" />
             <Stat value="৮" label="ক্যাটাগরি" />
             <Stat value="১২+" label="বাজার" />
@@ -92,7 +92,7 @@ export default function HeroBanner() {
           <div className="absolute inset-0 -z-10 rounded-full bg-yellow-400/20 blur-3xl" />
 
           {/* Floating Card */}
-          <div className="relative rounded-3xl border border-white/20 bg-white/5 p-4 shadow-2xl backdrop-blur-md sm:p-6">
+          <div className="relative rounded-3xl border border-white/20 bg-white/5 p-6 shadow-2xl backdrop-blur-md">
             <Image
               src="/bazar-hero.png"
               alt="Market Basket"
@@ -117,7 +117,7 @@ export default function HeroBanner() {
       </div>
 
       {/* Bottom Fade */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/20 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
     </section>
   );
 }
