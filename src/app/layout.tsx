@@ -48,7 +48,7 @@ export default function RootLayout({
       className={`${hindSiliguri.className} min-h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-screen flex-col bg-[#f8faf7] text-slate-800 selection:bg-emerald-200 selection:text-emerald-950">
+      <body className="flex min-h-screen flex-col bg-[#F9FAFB] text-slate-800 selection:bg-emerald-200 selection:text-emerald-950">
         {/* Premium sticky navigation */}
         <div className="sticky top-0 z-50 border-b border-emerald-100/80 bg-white/95 shadow-[0_4px_24px_rgba(15,23,42,0.04)] backdrop-blur-xl">
           <Header />
