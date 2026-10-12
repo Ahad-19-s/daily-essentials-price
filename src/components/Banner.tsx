@@ -71,7 +71,7 @@ export default function HeroBanner() {
             </Link>
 
             <Link
-              href="/categories"
+              href="/"
               className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/5 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all hover:border-white/60 hover:bg-white/10"
             >
               ক্যাটাগরি ব্রাউজ করুন

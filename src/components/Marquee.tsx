@@ -2,6 +2,7 @@ import Link from "next/link";
 
 interface Product {
   id: string;
+  slug: string;
   nameBn: string;
   icon?: string;
   today: number; // আজকের দাম
@@ -54,27 +55,23 @@ export default async function Marquee() {
   return (
     <div className="overflow-hidden bg-green-900 text-yellow-300">
       <div className="mx-auto max-w-7xl">
-        <div className="marquee-track flex w-max animate-marquee">
+        <div className="marquee-track flex w-max animate-marquee gap-6 px-4">
           {[0, 1].map((copy) => (
             <div
               key={copy}
               className="flex shrink-0 items-center"
               aria-hidden={copy === 1}
             >
-              {products.map((product, index) => (
+              {products.map((product) => (
                 <Link
-                  key={`${copy}-${product.id}-${index}`}
-                  href={`/product/${product.id}`}
-                  tabIndex={copy === 1 ? -1 : undefined}
-                  className="mx-5 flex shrink-0 items-center gap-2 py-2 text-sm hover:underline"
+                  key={product.slug}
+                  href={`/product/${product.slug}`}
+                  className="flex items-center gap-2 py-2 text-sm hover:underline mx-6" // এখানে extra margin
                 >
-                  {/* নাম */}
                   <span className="font-semibold">{product.nameBn}</span>
-                  {/* আজকের দাম */}
                   <span className="text-yellow-200">
                     {product.today} টাকা/{product.unit}
                   </span>
-                  {/* পরিবর্তন শতাংশ */}
                   <span
                     className={
                       product.change.dir === "up"

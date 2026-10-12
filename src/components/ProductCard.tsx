@@ -2,6 +2,7 @@ import Link from "next/link";
 
 type Product = {
   id: string | number;
+  slug?: string;
   icon?: string;
   nameBn: string;
   unit: string;
@@ -19,7 +20,9 @@ type ProductCardProps = {
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
-      href={`/product/${product.id}`}
+      href={
+        product.slug ? `/product/${product.slug}` : `/product/${product.id}`
+      }
       className="bg-white rounded-lg shadow p-4 flex flex-col gap-2 hover:shadow-md transition"
     >
       <span className="text-3xl">{product.icon ?? "🛒"}</span>
