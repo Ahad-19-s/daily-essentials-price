@@ -17,8 +17,7 @@ export default function UpdateInformationPage() {
     try {
       await authClient.updateUser({
         name,
-        email,
-        password,
+        ...(password ? { password } : {}),
         image,
       });
       toast.success("✅ তথ্য সফলভাবে আপডেট হয়েছে!");

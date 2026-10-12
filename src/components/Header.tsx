@@ -37,6 +37,7 @@ const Header = () => {
               priority
               className="drop-shadow-sm"
             />
+
             <span
               suppressHydrationWarning
               className="text-2xl font-extrabold text-green-700 tracking-tight"

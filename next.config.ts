@@ -12,11 +12,32 @@ const nextConfig = {
     },
   },
   images: {
-    domains: [
-      "lh3.googleusercontent.com", // Google profile image domain
-      "avatars.githubusercontent.com", // GitHub profile image domain
-      "platform-lookaside.fbsbx.com", // Facebook profile image domain
-      "pbs.twimg.com", // Twitter profile image domain
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        pathname: "/**", // Google profile image
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "/u/**", // GitHub avatars
+      },
+      {
+        protocol: "https",
+        hostname: "platform-lookaside.fbsbx.com",
+        pathname: "/**", // Facebook profile images
+      },
+      {
+        protocol: "https",
+        hostname: "pbs.twimg.com",
+        pathname: "/profile_images/**", // Twitter profile images
+      },
+      {
+        protocol: "https",
+        hostname: "tse2.mm.bing.net",
+        pathname: "/**", // Bing thumbnails
+      },
     ],
   },
 };
