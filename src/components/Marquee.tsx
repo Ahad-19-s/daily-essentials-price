@@ -72,7 +72,7 @@ export default async function Marquee() {
                     {product.nameBn}{" "}
                   </span>
                   <span suppressHydrationWarning className="font-semibold">
-                    {product.nameBn}
+                    {product.today} টাকা
                   </span>
 
                   <span
