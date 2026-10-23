@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@plugin "daisyui";
+html, body {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+}
+
+.marquee-track {
+  animation: bazar-marquee 35s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes bazar-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+}
+@font-face {
+  font-family: "HindSiliguri";
+  src: url("/fonts/HindSiliguri-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "HindSiliguri";
+  src: url("/fonts/HindSiliguri-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
